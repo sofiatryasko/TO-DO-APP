@@ -14,5 +14,5 @@ This is a Todo application created using React. It allows users to manage tasks 
 ## Technologies Used
 
 - **React**
-- **LocalStorage**
+- **JS**
 - **HTML/CSS**
