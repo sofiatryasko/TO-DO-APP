@@ -170,7 +170,13 @@ export const App: React.FC = () => {
   const changeStatusAllTodos = () => {
     try {
       setIsLoading(true);
-      setTodos(todos => todos.map((todoItem) => (!todoItem.completed ? { ...todoItem, completed: true } : todoItem)));
+
+      setTodos(todos =>
+          todos.map(todoItem => ({
+            ...todoItem,
+            completed: !isAllTodosChecked(todos),
+          }))
+      );
     } catch (error) {
       setErrorMessage(Error.Loading);
       setErrorMessage(Error.Updating);
@@ -189,7 +195,7 @@ export const App: React.FC = () => {
              && (
                <button
                  type="button"
-                 className={classNames('todoapp__toggle-all', { active: !isAllTodosChecked })}
+                 className={classNames('todoapp__toggle-all', { active: !isAllTodosChecked(todos) })}
                  onClick={() => changeStatusAllTodos()}
                />
              )}

@@ -68,9 +68,9 @@ export const TodoItem: React.FC<Props> = ({
       onDoubleClick={() => onEditMode(todo)}
     >
 
-      <label className="todo__status-label" htmlFor="checkbox_status">
+      <label className="todo__status-label" htmlFor={String(todo.id)}>
         <input
-          id="checkbox_status"
+          id={String(todo.id)}
           type="checkbox"
           className="todo__status"
           checked={completed}
