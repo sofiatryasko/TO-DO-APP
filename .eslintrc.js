@@ -9,8 +9,8 @@ module.exports = {
     'react/self-closing-comp': 0,
     'react/display-name': 0,
     'react/react-in-jsx-scope': 'off',
-    "no-shadow": "off",
-    "@typescript-eslint/no-shadow": ["error"],
+    'no-shadow': 'off',
+    '@typescript-eslint/no-shadow': ['error'],
 
     // JavaScript
     semi: 0,

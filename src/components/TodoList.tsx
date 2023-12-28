@@ -20,10 +20,11 @@ export const TodoList: React.FC<Props> = ({
           key={todo.id}
           todo={todo}
           handleDelete={handleDelete}
-          changeStatus={() => changeStatus(todo)}
+          changeStatus={changeStatus}
           changeTitle={(
             editTodo: Todo, editedTitle: string,
           ) => changeTitle(editTodo, editedTitle)}
+          isTempTodo={false}
         />
       ))}
     </>

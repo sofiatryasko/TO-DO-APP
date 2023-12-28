@@ -12,6 +12,7 @@ import { Footer } from './components/Footer';
 import { Notification } from './components/Notification';
 import { Error } from './utils/Error';
 import { FilterValue } from './utils/FilterValue';
+import { TodoItem } from './components/TodoItem'
 
 const USER_ID = 6752;
 
@@ -132,6 +133,7 @@ export const App: React.FC = () => {
   const changeStatus = (todo:Todo) => {
     try {
       setIsLoading(true);
+      console.log(todo)
       setTodos(todos => todos.map(todoItem => (todoItem.id === todo.id ? { ...todoItem, completed: !todoItem.completed } : todoItem)));
       updateTodo(todo);
     } catch (error) {
@@ -205,14 +207,19 @@ export const App: React.FC = () => {
         </header>
 
         <section className="todoapp__main">
-          {{ tempTodo } && (
             <TodoList
               todos={getFilteringTodos()}
               handleDelete={handleDelete}
               changeStatus={changeStatus}
               changeTitle={changeTitle}
             />
-          )}
+          {tempTodo && <TodoItem
+                todo={tempTodo}
+          handleDelete={handleDelete}
+          changeStatus={changeStatus}
+          changeTitle={changeTitle}
+                isTempTodo={true}
+              />}
         </section>
         {todos.length !== 0 &&(
           <Footer

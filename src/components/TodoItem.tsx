@@ -9,10 +9,11 @@ type Props = {
   handleDelete: (id : number) => void;
   changeStatus: (todo: Todo) => void;
   changeTitle: (todo: Todo, editedTitle: string) => void;
+  isTempTodo: boolean;
 };
 
 export const TodoItem: React.FC<Props> = ({
-  todo, handleDelete, changeStatus, changeTitle,
+  todo, handleDelete, changeStatus, changeTitle, isTempTodo,
 }) => {
   const { completed, title } = todo;
   const [isEditing, setIsEditing] = useState(false);
@@ -97,7 +98,7 @@ export const TodoItem: React.FC<Props> = ({
             <span className="todo__title">
               {todo.title}
             </span>
-            <div className="modal overlay">
+            <div className={classNames('modal overlay', { 'is-active': isTempTodo })}>
               <div className="modal-background has-background-white-ter" />
               <div className="loader" />
             </div>
